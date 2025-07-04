@@ -1,0 +1,245 @@
+ <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Padauk', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background: rgba(25, 25, 50, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      padding: 35px;
+      border: 1px solid #444;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #4a4a8a;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #ffcc00;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+    .warning-banner {
+      background: linear-gradient(90deg, #ff0000, #ff5722);
+      padding: 15px;
+      text-align: center;
+      margin: 10px 0;
+      border-radius: 10px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 87, 34, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+    }
+    .card {
+      background: rgba(40, 40, 80, 0.7);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid #555;
+    }
+    .input-group {
+      margin: 25px 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: #ffcc00;
+      font-size: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 16px;
+      font-size: 20px;
+      border: 2px solid #4a4a8a;
+      border-radius: 12px;
+      text-align: center;
+      background: rgba(30, 30, 60, 0.8);
+      color: white;
+      font-weight: bold;
+    }
+    input:focus {
+      border-color: #ffcc00;
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+    button {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(to right, #ff5722, #ff9800);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: all 0.3s;
+      box-shadow: 0 6px 18px rgba(255, 152, 0, 0.4);
+      letter-spacing: 1px;
+    }
+    button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
+    }
+    #predictionResult, #finalResult {
+      font-size: 56px;
+      font-weight: bold;
+      text-align: center;
+      margin: 25px 0;
+      letter-spacing: 20px;
+      min-height: 80px;
+      color: #ffcc00;
+      text-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      font-family: 'Courier New', monospace;
+    }
+    #countdown {
+      font-size: 50px;
+      text-align: center;
+      font-weight: bold;
+      color: #4fc3f7;
+      margin: 25px 0;
+      min-height: 70px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
+      font-family: 'Digital', monospace;
+    }
+    .result-box {
+      background: linear-gradient(to right, rgba(0, 100, 0, 0.3), rgba(0, 80, 0, 0.3));
+      border-radius: 15px;
+      padding: 30px;
+      border: 2px solid #4caf50;
+      margin: 25px 0;
+      text-align: center;
+    }
+    .result-title {
+      font-weight: bold;
+      color: #4caf50;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .auto-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+    .auto-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    #autoStartBtn {
+      background: linear-gradient(to right, #00c853, #64dd17);
+      color: white;
+    }
+    #autoStopBtn {
+      background: linear-gradient(to right, #f44336, #ff5252);
+      color: white;
+    }
+    .auto-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .led {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f44336;
+      margin-right: 10px;
+      box-shadow: 0 0 10px #f44336;
+    }
+    .led.active {
+      background: #00c853;
+      box-shadow: 0 0 15px #00c853;
+    }
+    .cycle-count {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 20px;
+      color: #4fc3f7;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #aaa;
+      font-size: 18px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+    }
+    .info-panel {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      color: #aaa;
+    }
+    @font-face {
+      font-family: 'Digital';
+      src: url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+    }
+
+    .prediction-digits {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    .digit-btn {
+      padding: 12px 18px;
+      font-size: 24px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #4fc3f7, #0288d1);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+      min-width: 50px;
+      text-align: center;
+    }
+    .digit-btn:hover {
+      transform: scale(1.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+  </style>

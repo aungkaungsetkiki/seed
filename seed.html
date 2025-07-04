@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>အလိုအလျောက် နံပါတ်ခန့်မှန်းစနစ်</title>
+  <link rel="stylesheet" href="sstyles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>အလိုအလျောက် နံပါတ်ခန့်မှန်းစနစ်</h1>
+      <div class="warning-banner">
+        ⚠️သတိပြုရန် - အစွမ်းကုန်ကြိုးစားပေးထားသော်လည်း code အမျိုးအစား ရကွဲလွဲနိုင်၊ ထိုကြောင့် ချင့်ချိန်ဆော့ပါရန် ⚠️
+      </div>
+    </header>
+    
+    <div class="card">
+      <div class="input-group">
+        <label for="seedInput">အစပျိုးနံပါတ် (ဂဏန်း ၅ လုံး):</label>
+        <input type="text" id="seedInput" maxlength="5" placeholder="12345" value="" />
+      </div>
+      <div class="input-group">
+        <label for="multiplierInput">Input Number 1 (Multiplier):</label>
+        <input type="number" id="multiplierInput" placeholder="48271" value="" />
+      </div>
+      <div class="input-group">
+        <label for="modulusInput">Input Number 2 (Modulus):</label>
+        <input type="number" id="modulusInput" placeholder="2147483647" value="" />
+      </div>
+      <div class="input-group">
+        <label for="hisInput">Input Number his:</label>
+        <input type="number" id="hisInput" placeholder="0" value="" />
+      </div>
+      <div class="input-group">
+        <label for="timeInput">အချိန်သတ်မှတ်ခြင်း:</label>
+        <div class="time-inputs">
+          <input type="number" id="hours" placeholder="နာရီ" min="0" max="23" value="0" />
+          <input type="number" id="minutes" placeholder="မိနစ်" min="0" max="59" value="0" />
+          <input type="number" id="seconds" placeholder="စက္ကန့်" min="0" max="59" value="0" />
+        </div>
+      </div>
+      <button id="manualStartBtn">တစ်ကြိမ်တည်း စတင်ရန်</button>
+    </div>
+
+    <div class="result-box">
+      <div class="result-title">ကြိုတင်ခန့်မှန်းချက်</div>
+      <div id="predictionResult">-----</div>
+      <div class="prediction-digits" id="predictionDigits"></div>
+    </div>
+    
+    <div id="countdown">00:00:00</div>
+    
+    <div class="result-box">
+      <div class="result-title">နောက်ဆုံးရလဒ်</div>
+      <div id="finalResult">-----</div>
+    </div>
+    
+    <div class="auto-controls">
+      <button id="autoStartBtn" class="auto-btn">Auto စတင်ရန်</button>
+      <button id="autoStopBtn" class="auto-btn">Auto ရပ်ရန်</button>
+    </div>
+    
+    <div class="status-indicator">
+      <div class="led" id="statusLed"></div>
+      <div id="statusText">Auto Mode: ပိတ်ထားသည်</div>
+    </div>
+    
+    <div class="cycle-count">
+      <div id="cycleCounter">လုပ်ဆောင်ပြီးအကြိမ်ရေ: 0</div>
+    </div>
+    
+    <div class="info-panel">
+      <div>အချိန်သတ်မှတ်ပြီးနောက် အလိုအလျောက်ပြန်စသည်</div>
+      <div>အကြိမ်ရေ: <span id="cycleCount">0</span></div>
+    </div>
+    
+    <footer>
+      KK Userများအတွက်
+    </footer>
+  </div>
+
+   <script src="sscript.js"></script>
+</body>
+</html>
